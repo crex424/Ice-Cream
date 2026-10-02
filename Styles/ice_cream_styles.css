@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: lightskyblue;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+input[type="text"], input[type="email"], select{
+    width: 100%;
+    border: 2px solid;
+    border-radius: .25em;
+    margin: 0rem 0rem 1rem 0rem;
+    padding: -75rem;
+}
+
+#main {
+    background-color: white;
+    width: 70%;
+    margin: 0 auto;
+    padding: 0 1rem 2rem 1rem;
+}

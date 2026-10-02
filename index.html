@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Images/icecreamfav.png">
+    <link rel="stylesheet" href="Styles/ice_cream_styles.css">
+    <title>Ice Cream</title>
+</head>
+<body>
+    <div id="main">
+
+        <h1>Ice Cream Order Form</h1>
+
+        <form action="#" method="get">
+            <fieldset >
+                <legend>Personal information</legend>
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email">
+            </fieldset>
+
+            <fieldset>
+                <legend>Order Details</legend>
+                <select name="flavor" id="flavor">
+                    <option value="vanilla">Vanilla</option>
+                    <option value="chocolate">Chocolate</option>
+                    <option value="strawberry">Strawberry</option>
+                    <option value="bubble-gum">Bubble Gum</option>
+                </select>
+            </fieldset>
+            <fieldset>
+                <legend>Choose your flavor</legend>
+                <label for="waffle">
+                    <input type="radio" id="waffle" name="method" value="waffle">
+                    Waffle Cone</label>
+                
+                <label for="sugar">
+                <input type="radio" id="sugar" name="method" value="sugar">
+                Sugar Cone</label>
+
+                <label for="cup">
+                    <input type="radio" id="cup" name="method" value="cup">
+                    Cup</label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Toppings</legend>
+                <label for="sprinkes">
+                    <input type="checkbox" id="sprinkles" name="sprinkles" value="sprinkles">
+
+                </label>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>
