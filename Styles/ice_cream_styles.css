@@ -4,11 +4,11 @@
 
 body {
     background-color: lightskyblue;
-    margin: 0;
+    margin: auto;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-input[type="text"], input[type="email"], select{
+input[type="text"], input[type="email"], select, textarea{
     width: 100%;
     border: 2px solid;
     border-radius: .25em;
@@ -21,4 +21,37 @@ input[type="text"], input[type="email"], select{
     width: 70%;
     margin: 0 auto;
     padding: 0 1rem 2rem 1rem;
+}
+
+legend {
+    margin: auto;
+    padding-bottom: 0.5rem;
+    color: darkgreen;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#header h1 {
+    margin: auto;
+    float: center;
+    padding: 0.5rem;
+}
+
+.sub-heading {
+    padding-top: 1rem;
+    display: block;
+}
+
+#order_button {
+    background-color: green;
+    display: block;
+    width: 100%;
+    border-color: green;
+    border: 0;
+    border-radius: .25rem;
+    padding: 14px 28px;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    text-align: center;
 }

@@ -9,9 +9,9 @@
 </head>
 <body>
     <div id="main">
-
-        <h1>Ice Cream Order Form</h1>
-
+        <div id="header">
+            <h1>Ice Cream Order Form</h1>
+        </div>
         <form action="#" method="get">
             <fieldset >
                 <legend>Personal information</legend>
@@ -23,30 +23,31 @@
 
             <fieldset>
                 <legend>Order Details</legend>
+                <!-- Flavors -->
+                <label for="flavor" class="sub-heading">Choose your flavor:</label>
                 <select name="flavor" id="flavor">
                     <option value="vanilla">Vanilla</option>
                     <option value="chocolate">Chocolate</option>
                     <option value="strawberry">Strawberry</option>
                     <option value="bubble-gum">Bubble Gum</option>
                 </select>
-            </fieldset>
-            <fieldset>
-                <legend>Choose your flavor</legend>
+                <!-- Cone Type -->
+                <label for="cone-type" class="sub-heading">Choose your cone:</label>
                 <label for="waffle">
                     <input type="radio" id="waffle" name="method" value="waffle">
-                    Waffle Cone</label>
+                    Waffle Cone
+                </label>
                 
                 <label for="sugar">
-                <input type="radio" id="sugar" name="method" value="sugar">
-                Sugar Cone</label>
-
+                    <input type="radio" id="sugar" name="method" value="sugar">
+                    Sugar Cone
+                </label>
                 <label for="cup">
                     <input type="radio" id="cup" name="method" value="cup">
-                    Cup</label>
-            </fieldset>
-
-            <fieldset>
-                <legend>Toppings</legend>
+                    Cup
+                </label>
+                <!-- Toppings -->
+                <label for="toppings" class="sub-heading">Toppings</label>
                 <label for="sprinkles">
                     <input type="checkbox" id="sprinkles" name="toppings[]" value="sprinkles">
                     Sprinkles
@@ -63,7 +64,11 @@
                     <input type="checkbox" id="orea" name="toppings[]" value="oreo">
                     Oreo
                 </label>
+                <label for="comment" class="sub-heading">Additional comments</label>
+                <textarea rows="5" name="comment" id="comment"></textarea>
             </fieldset>
+            <!-- Submit button -->
+            <button type="submit" id="order_button">Place Order</button>
         </form>
     </div>
 </body>
