@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="Images/icecreamfav.png">
     <link rel="stylesheet" href="Styles/ice_cream_styles.css">
-    <script src="js/ice-cream.js"></script>
+    <!-- JavaScript -->
+    <script src="js/ice-cream.js" defer></script>
 
     <title>Ice Cream</title>
 </head>
@@ -14,15 +15,15 @@
         <div id="header">
             <h1>Ice Cream Order Form</h1>
         </div>
-        <form action="submit-order" id="ice-cream-form" method="get">
+        <form action="#" id="ice-cream-form" method="get">
             <fieldset >
                 <legend>Personal information</legend>
                 <label for="name">Name:</label>
-                <span id="err-name">Please Enter Your Name!</span>
+                <span id="err-name" class="error">Please Enter Your Name!</span>
                 <input type="text" name="name" id="name">
                 <label for="email">Email:</label>
+                <span id="err-email" class="error">Please Enter Your email!</span>
                 <input type="email" name="email" id="email">
-                <span id="err-email">Please Enter Your email!</span>
             </fieldset>
 
             <fieldset>
@@ -51,7 +52,8 @@
                     <input type="radio" id="cup" name="method" value="cup">
                     Cup
                 </label>
-                 <span id="err-method" class="error">Please select cone type!</span>
+                 <br>
+                <span id="err-method" class="error">Please select cone type!</span>
                 <!-- Toppings -->
                 <label class="sub-heading">Toppings</label>
                 <label for="sprinkles">

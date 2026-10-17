@@ -1,8 +1,8 @@
 document.getElementById("ice-cream-form").onsubmit = () => {
-    let isValid = true;
-
     // Clear all errors
     clearErrors();
+
+    let isValid = true;
 
     // Validate First Name
     let name = document.getElementById("name").value.trim();
@@ -10,7 +10,7 @@ document.getElementById("ice-cream-form").onsubmit = () => {
         document.getElementById("err-name").style.display = "block";
         isValid = false;
     }
-
+    // Validate Email
     let email = document.getElementById('email').value.trim();
     if (!email || email.indexOf("@") === -1) {
         document.getElementById("err-email").style.display = "block";
@@ -27,23 +27,24 @@ document.getElementById("ice-cream-form").onsubmit = () => {
 
     // Validate method Cone Type
     let methodButtons = document.getElementsByName("method");
-    let count = 0;
+    let methodSelected = false
     for (let i = 0; i < methodButtons.length; i++) {
         if (methodButtons[i].checked) {
-            count++;
+            methodSelected = true
+            
         }
     }
-    if (count === 0) {
+    if (!methodSelected) {
         document.getElementById("err-method").style.display = "block";
         isValid = false;
     }
 
     return isValid;
-}
+};
 
 function clearErrors() {
     let errors = document.getElementsByClassName("error");
-    for (let i=0; i<errors.length; i++) {
+    for (let i = 0; i < errors.length; i++) {
         errors[i].style.display = "none";
     }
 }

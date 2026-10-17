@@ -58,3 +58,8 @@ legend {
 #button {
     padding-top: 1rem;
 }
+
+.error {
+    color: red;
+    display: none;
+}
