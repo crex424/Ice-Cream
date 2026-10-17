@@ -4,7 +4,7 @@ document.getElementById("ice-cream-form").onsubmit = () => {
 
     let isValid = true;
 
-    // Validate First Name
+    // Validate Name
     let name = document.getElementById("name").value.trim();
     if (name === ""){
         document.getElementById("err-name").style.display = "block";
@@ -19,8 +19,8 @@ document.getElementById("ice-cream-form").onsubmit = () => {
 
     // Validate flavor
     let flavor = document.getElementById("flavor").value;
-    if (flavor === "none") {
-        document.getElementById("err-flavor").style.display == "block";
+    if (flavor == "none") {
+        document.getElementById("err-flavor").style.display = "block";
         isValid = false;
     }
 
