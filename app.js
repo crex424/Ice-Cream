@@ -4,6 +4,8 @@ import mysql2 from 'mysql2';
 
 import dotenv from 'dotenv';
 
+import session from 'express-session';
+
 dotenv.config();
 
 const pool = mysql2.createPool({
@@ -16,6 +18,24 @@ const pool = mysql2.createPool({
 }).promise();
 
 const app = express();
+
+/* ==================== SESSION MIDDLEWARE ====================
+ * A SESSION lets the server remember a user between requests.
+ * After this runs, every route can read and write req.session.
+ *
+ * secret:            Used to sign the session cookie (from .env)
+ * resave:            false = don't re-save sessions that didn't change
+ * saveUninitialized: false = don't create a session until we store
+ *                    something in it (like loggedIn = true)
+ * cookie.maxAge:     How long the login lasts, in milliseconds
+ *                    (1000 ms * 60 sec * 60 min = 1 hour)
+ */
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 1000 * 60 * 60 }
+}));
 
 // Port
 const PORT = 3001;
