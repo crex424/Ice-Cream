@@ -1,50 +1,60 @@
-document.getElementById("ice-cream-form").onsubmit = () => {
-    // Clear all errors
-    clearErrors();
+//alert("Hello, ice cream!") ; 
 
+document.getElementById("order-form").onsubmit = () => {
     let isValid = true;
 
-    // Validate Name
+    clearErrors();
+
+    // Name
     let name = document.getElementById("name").value.trim();
     if (name === ""){
-        document.getElementById("err-name").style.display = "block";
-        isValid = false;
-    }
-    // Validate Email
-    let email = document.getElementById('email').value.trim();
-    if (!email || email.indexOf("@") === -1) {
-        document.getElementById("err-email").style.display = "block";
+        document.getElementById("err-name").style.display = "inline-block";
         isValid = false;
     }
 
-    // Validate flavor
-    let flavor = document.getElementById("flavor").value;
-    if (flavor == "none") {
+    //Email
+    let email = document.getElementById("email").value.trim();
+
+    if(email === "" || !email.includes('@') || !email.includes('.')){
+        document.getElementById("err-email").style.display = "inline-block";
+        isValid = false;
+    }
+
+    // Flavors
+    let chosenflavor = document.getElementsByName("flavor").value;
+    
+    if(chosenflavor === "none"){
+        document.getElementById("err-flavor").style.display = "inline-block";
+        isValid = false;
+    }
+    // Cone
+/*
+
+    if (!methodSelected) {
         document.getElementById("err-flavor").style.display = "block";
         isValid = false;
-    }
-
-
-    // Validate method Cone Type
-    let methodButtons = document.getElementsByName("method");
-    let methodSelected = false
-    for (let i = 0; i < methodButtons.length; i++) {
-        if (methodButtons[i].checked) {
-            methodSelected = true
-            
-        }
-    }
-    if (!methodSelected) {
-        document.getElementById("err-method").style.display = "block";
+    } else {
+        clearErrors();
+    }*/
+    
+    // Cones
+    /*
+    let waffle = document.getElementById("waffle").value;
+    let cup = document.getElementById("cup").value;
+    let sugar = document.getElementById("sugar").value;
+   
+    if (!document.getElementById('waffle').checked || !document.getElementById('cup').checked || !document.getElementById('sugar').checked) {
+        document.getElementById("err-cone").style.display = "block";
         isValid = false;
-    }
+
+    }*/
 
     return isValid;
-};
-
-function clearErrors() {
-    let errors = document.getElementsByClassName("error");
-    for (let i = 0; i < errors.length; i++) {
-        errors[i].style.display = "none";
-    }
 }
+
+function clearErrors(){
+        let errors = document.getElementsByClassName("err");
+        for(let i=0; i < errors.length; i++){
+            errors[i].style.display = "none";
+        }
+    }
