@@ -37,6 +37,15 @@ app.use(session({
     cookie: { maxAge: 1000 * 60 * 60 }
 }));
 
+// Only let logged in users through; send everyone else to /login
+function requireLogin(req, res, next) {
+    if (req.session.loggedIn) {
+        next();
+    } else {
+        res.redirect('/login');
+    }
+}
+
 // Port
 const PORT = 3001;
 
@@ -49,10 +58,36 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-    //res.send('Pizza Time!');
-    //res.sendFile(`${import.meta.dirname}/views/home.html`)
 
     res.render('home');
+});
+
+app.get('/login', (req, res) => {
+
+    res.render('login', {error: null});
+});
+
+// Process the login form
+app.post('/login', (req,res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    // Compare the form values to the values in .env
+    if (username === process.env.ADMIN_USER && password === process.env.ADMIN_PASSWORD) {
+        req.session.loggedIn = true;
+        res.redirect('/admin');
+    } else {
+        res.render('login', {error: 'Invalid username or password.'});
+    }
+});
+
+// Log out - http://localhost:3000/logout
+// req.session.destroy() deletes the session from the server.
+// When it's finished, we send the user back to the login page.
+app.get('/logout', (req, res) => {
+    req.session.destroy(() => {
+        res.redirect('/login');
+    });
 });
 
 app.get('/db-test', async(req, res) => {
@@ -82,7 +117,7 @@ app.post('/submit-order', async(req, res) => {
 
     // Define an SQL query to INSERT new order
     const sql = `INSERT INTO orders (name, email, flavor, cone, toppings, comment) 
-                    VALUES(?, ?, ?, ?, ?, ?, ?)`;
+                    VALUES(?, ?, ?, ?, ?, ?)`;
     // Create an array of parameters from order data
     const params = [
         order.name,
@@ -104,7 +139,7 @@ app.post('/submit-order', async(req, res) => {
     res.render('confirm', {order})
 })
 
-app.get('/admin', async(req, res) =>{
+app.get('/admin', requireLogin, async(req, res) =>{
     try {
         const [orders] = await pool.query('SELECT * FROM orders ORDER BY timestamp DESC');
         console.log(orders);
